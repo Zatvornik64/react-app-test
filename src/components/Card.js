@@ -30,9 +30,11 @@ class Card extends React.Component {
     render() {
       let itemsTemplate = this.props.data.map(function(item) {
        return (
-         <Article2 key={item.id} data={item}/>
+        <React.Fragment>
+          { item.count ? <Article2 key={item.id} data={item}/> : null }
+         </React.Fragment>
        )})
-  
+     
       return (
         <React.Fragment>
         <div className="table_border" onClick={this.cardHandler}>
