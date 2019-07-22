@@ -30,8 +30,8 @@ class Card extends React.Component {
     render() {
       let itemsTemplate = this.props.data.map(function(item) {
        return (
-        <React.Fragment>
-          { item.count ? <Article2 key={item.id} data={item}/> : null }
+        <React.Fragment key={item.id}>
+          { item.count ? <Article2  data={item}/> : null }
          </React.Fragment>
        )})
      
