@@ -5,15 +5,13 @@ import '../css/Card.css';
 
 class Card extends React.Component {
   
-    cardHandler = (evt) => {
-      if (evt.target.classList.contains('count_sub')) {
-        if (this.props.data[evt.target.id].count > 0) this.props.data[evt.target.id].count--;
+    countSubHandler = (evt) => {
+      if (this.props.data[evt.target.id].count > 0) this.props.data[evt.target.id].count--;
         this.forceUpdate();
-      }
-      if (evt.target.classList.contains('count_null')) {
-        this.props.data[evt.target.id].count = 0;
+    }
+    countNullHandler = (evt) => {
+      this.props.data[evt.target.id].count = 0;
         this.forceUpdate();
-      }
     }
   
     itemsListOpenHandler = () => {
@@ -33,14 +31,17 @@ class Card extends React.Component {
         sum += item.price * item.count;
        return (
         <React.Fragment key={item.id}>
-          { item.count ? <CardArticle  data={item}/> : null }
+          { item.count ? <CardArticle 
+            countSubHandler={this.countSubHandler} 
+            countNullHandler={this.countNullHandler} 
+            data={item}/> : null }
          </React.Fragment>
        )})
       
      
       return (
         <React.Fragment>
-        <div className="table_border" onClick={this.cardHandler}>
+        <div className="table_border">
           <table>
           <tbody>
             <tr>

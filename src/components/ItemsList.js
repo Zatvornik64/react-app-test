@@ -4,12 +4,10 @@ import '../css/ItemsList.css';
 
 class ItemsList extends React.Component {
 
-    itemsListHandler = (evt) => {
-      if (evt.target.classList.contains('count_add')) {
-        this.props.data[evt.target.id].count++;
-      this.forceUpdate();
-    }}
-  
+    countAddHandler = (evt) => {
+      this.props.data[evt.target.id].count++;
+        this.forceUpdate();
+    }
     cardOpenHandler = () => {
       this.props.onMenu();
     }
@@ -17,12 +15,12 @@ class ItemsList extends React.Component {
     render() {
       let itemsTemplate = this.props.data.map((item) => {
        return (
-         <ItemsListArticle key={item.id} data={item}/>
+         <ItemsListArticle countAddHandler={this.countAddHandler} key={item.id} data={item}/>
        )})
   
       return (
         <React.Fragment>
-        <div className="table_border" onClick={this.itemsListHandler}>
+        <div className="table_border" >
           <table>
           <tbody>
             <tr>
