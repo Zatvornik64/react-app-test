@@ -1,39 +1,42 @@
 import React from 'react';
-import {items, visible} from './ItemData.js'
-import { Article2 } from './Article2'
-class Card extends React.Component {
+import { CardArticle } from './CardArticle'
+import '../css/Card.css';
 
+
+class Card extends React.Component {
+  
     cardHandler = (evt) => {
       if (evt.target.classList.contains('count_sub')) {
-        if (items[evt.target.id].count > 0) items[evt.target.id].count--;
+        if (this.props.data[evt.target.id].count > 0) this.props.data[evt.target.id].count--;
         this.forceUpdate();
       }
       if (evt.target.classList.contains('count_null')) {
-        items[evt.target.id].count = 0;
+        this.props.data[evt.target.id].count = 0;
         this.forceUpdate();
       }
     }
   
     itemsListOpenHandler = () => {
-      visible.list = true;
-      visible.card = false;
       this.props.onMenu();
     }
   
     dellAllHandler = () => {
-      items.forEach(function(item) {
+      this.props.data.forEach(function(item) {
         item.count = 0;
       });
-       this.props.onMenu();
+      this.forceUpdate();
     }
   
     render() {
-      let itemsTemplate = this.props.data.map(function(item) {
+      let sum = 0;
+      let itemsTemplate = this.props.data.map((item) => {
+        sum += item.price * item.count;
        return (
         <React.Fragment key={item.id}>
-          { item.count ? <Article2  data={item}/> : null }
+          { item.count ? <CardArticle  data={item}/> : null }
          </React.Fragment>
        )})
+      
      
       return (
         <React.Fragment>
@@ -49,6 +52,7 @@ class Card extends React.Component {
           {itemsTemplate}
           </tbody>
         </table>
+        <div className="sum">Общая стоимость :   $<b>{sum}</b></div>
         </div>
         <button className="card_btn card_button" onClick={this.itemsListOpenHandler}>Список покупок</button>
         <button className="card_btn card_button" onClick={this.dellAllHandler}>Очистить все</button>

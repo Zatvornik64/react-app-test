@@ -1,9 +1,9 @@
 import React from 'react';
-class Article2 extends React.Component {
+
+class CardArticle extends React.Component {
     render() {
     
-      return (
-       
+      return (       
         <React.Fragment>
            <tr>
             <td className="items_name">{this.props.data.name}</td>
@@ -17,4 +17,4 @@ class Article2 extends React.Component {
     
       
   
-   export { Article2 }
+   export { CardArticle }

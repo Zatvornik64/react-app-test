@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Article extends React.Component {
+class ItemsListArticle extends React.Component {
     render() {
      return (
          <tr>
@@ -11,4 +11,4 @@ class Article extends React.Component {
          </tr>
        )
    }}
-   export { Article }
+   export { ItemsListArticle }

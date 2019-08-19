@@ -1,25 +1,23 @@
 import React from 'react';
-import {items, visible} from './ItemData.js'
-import { Article } from './Article'
+import { ItemsListArticle } from './ItemsListArticle'
+import '../css/ItemsList.css';
 
 class ItemsList extends React.Component {
 
     itemsListHandler = (evt) => {
       if (evt.target.classList.contains('count_add')) {
-      items[evt.target.id].count++;
+        this.props.data[evt.target.id].count++;
       this.forceUpdate();
     }}
   
     cardOpenHandler = () => {
-      visible.list = false;
-      visible.card = true;
       this.props.onMenu();
     }
   
     render() {
-      let itemsTemplate = this.props.data.map(function(item) {
+      let itemsTemplate = this.props.data.map((item) => {
        return (
-         <Article key={item.id} data={item}/>
+         <ItemsListArticle key={item.id} data={item}/>
        )})
   
       return (

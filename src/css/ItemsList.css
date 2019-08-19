@@ -1,0 +1,31 @@
+.hidden {
+    display: none;
+  }
+  span {
+    margin-left: 50px;
+  }
+  button {
+    margin-left: 5px;
+    width: 90%;
+  }
+  table {
+    text-align: center;
+    border-collapse: collapse;
+    font-size: 24px;
+    
+  }
+  td {
+    width: 180px;
+  }
+  tr {
+    margin-bottom: 5px;
+  }
+  .table_border {
+    border: 2px solid #000;
+    border-radius: 8px;
+    width: 600px;
+    margin: 20px 0 0 20px;
+    padding: 10px 20px 10px 10px;
+  }
+  
+  
